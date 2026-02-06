@@ -1,0 +1,46 @@
+/*
+    ? 3? ?? ? ??? ??
+    ??? 3? - 3
+    ??? 2? ??? 1? - 6
+
+    ? 4?? ?? ? ??? ??
+    ??? 4? - 4
+    ??? 3? ??? 1? - 8
+    ??? 2? ??? 2? - 9
+
+    5?? ?? ? ??? ??
+    ??? 5? - 5
+    ??? 4? ??? 1? - 10
+    ??? 3? ??? 2? - 12
+*/
+#include<iostream>
+using namespace std;
+int main(){
+    long long n, k;
+    cin >> n >> k;
+    long long low = 0;
+    long long high = n/2;
+    long long mid;
+    bool chk = false;
+    while(low <= high){
+        mid = (low + high) / 2;
+        long long calc = (n - mid + 1) * (mid + 1);
+        if(calc == k){
+            chk = true;
+            break;
+        }
+        else if(calc > k){
+            high = mid - 1;
+        }
+        else{
+            low = mid + 1;
+        }
+    }
+    if(chk){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+    return 0;
+}
